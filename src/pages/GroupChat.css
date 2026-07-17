@@ -1,0 +1,16 @@
+/* GroupChat — inherits chat layout + group-specific styles */
+
+.group-header-chars {
+  display: flex;
+  align-items: center;
+}
+
+.group-header-char {
+  border-radius: 50%;
+  border: 2px solid var(--bg);
+}
+
+.group-header-info {
+  flex: 1;
+  margin-left: 12px;
+}

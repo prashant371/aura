@@ -1,0 +1,212 @@
+/* Landing Page — Velvet Void editorial hero */
+
+.landing {
+  min-height: 100vh;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Warm terracotta glow at the bottom */
+.landing-glow {
+  position: absolute;
+  bottom: -200px;
+  right: -100px;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(226,114,91,0.08) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.landing-inner {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 80px 48px;
+}
+
+/* ── Left: Copy ── */
+.landing-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  max-width: 520px;
+}
+
+.landing-overline {
+  color: var(--primary);
+}
+
+.landing-title {
+  font-size: clamp(2.6rem, 5vw, 4.8rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--text);
+}
+
+.landing-em {
+  font-style: italic;
+  color: var(--primary);
+  -webkit-text-fill-color: var(--primary);
+}
+
+.landing-sub {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+  max-width: 420px;
+}
+
+.landing-features {
+  display: flex;
+  gap: 32px;
+  padding: 24px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.landing-feat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.feat-label {
+  color: var(--text-dim);
+}
+
+.feat-val {
+  font-size: 0.9rem;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.landing-cta {
+  align-self: flex-start;
+  gap: 12px;
+  padding: 16px 32px;
+  font-size: 0.9rem;
+}
+
+.landing-fine {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  margin-top: -12px;
+}
+
+/* ── Right: Floating Cards ── */
+.landing-cards {
+  position: relative;
+  height: 520px;
+}
+
+.hero-card {
+  position: absolute;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.6);
+}
+
+.hero-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 8s ease;
+}
+
+.hero-card:hover img {
+  transform: scale(1.05);
+}
+
+.hero-card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px 16px 16px;
+  background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.4) 60%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hero-card-name {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--text);
+}
+
+/* Card positioning */
+.hero-card-1 {
+  width: 190px;
+  height: 290px;
+  left: 60px;
+  top: 80px;
+  animation: float1 6s ease-in-out infinite;
+}
+.hero-card-2 {
+  width: 210px;
+  height: 310px;
+  right: 20px;
+  top: 20px;
+  animation: float2 7s ease-in-out infinite;
+}
+.hero-card-3 {
+  width: 175px;
+  height: 265px;
+  right: 60px;
+  bottom: 40px;
+  animation: float3 8s ease-in-out infinite;
+}
+
+@keyframes float1 {
+  0%, 100% { transform: translateY(0px) rotate(-2deg); }
+  50%       { transform: translateY(-12px) rotate(-2deg); }
+}
+@keyframes float2 {
+  0%, 100% { transform: translateY(0px) rotate(1.5deg); }
+  50%       { transform: translateY(-16px) rotate(1.5deg); }
+}
+@keyframes float3 {
+  0%, 100% { transform: translateY(0px) rotate(-1deg); }
+  50%       { transform: translateY(-10px) rotate(-1deg); }
+}
+
+/* ── Footer ── */
+.landing-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 48px;
+  border-top: 1px solid var(--border);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .landing-inner {
+    grid-template-columns: 1fr;
+    padding: 60px 24px;
+    gap: 48px;
+  }
+  .landing-cards {
+    height: 300px;
+    order: -1;
+  }
+  .hero-card-1 { width: 140px; height: 210px; left: 20px; top: 40px; }
+  .hero-card-2 { width: 150px; height: 225px; right: 20px; top: 10px; }
+  .hero-card-3 { display: none; }
+  .landing-footer { padding: 16px 24px; flex-direction: column; gap: 8px; text-align: center; }
+}

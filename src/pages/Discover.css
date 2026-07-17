@@ -1,0 +1,220 @@
+/* Discover Page — Bento Grid */
+
+.discover-page {}
+
+.discover-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 32px;
+  gap: 24px;
+}
+
+.discover-title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 300;
+  line-height: 1;
+  margin-top: 8px;
+}
+
+.discover-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.discover-group-count {
+  font-size: 0.85rem;
+  color: var(--primary);
+  font-weight: 500;
+}
+
+/* Filters */
+.discover-filters {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.discover-search {
+  width: 260px;
+  flex-shrink: 0;
+}
+
+.discover-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* ── Bento Grid ── */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: 80px;
+  gap: 16px;
+}
+
+.bento-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  border: 1px solid var(--border);
+  transition: border-color var(--ease), transform var(--ease-slow);
+  animation: fadeUp 0.5s ease both;
+}
+
+.bento-card:nth-child(1) { animation-delay: 0ms; }
+.bento-card:nth-child(2) { animation-delay: 50ms; }
+.bento-card:nth-child(3) { animation-delay: 100ms; }
+.bento-card:nth-child(4) { animation-delay: 150ms; }
+.bento-card:nth-child(5) { animation-delay: 200ms; }
+.bento-card:nth-child(6) { animation-delay: 250ms; }
+.bento-card:nth-child(7) { animation-delay: 300ms; }
+.bento-card:nth-child(8) { animation-delay: 350ms; }
+
+.bento-card:hover {
+  border-color: var(--border-bright);
+  z-index: 2;
+}
+
+.bento-card:hover .bento-img {
+  transform: scale(1.06);
+}
+
+.bento-card.selected {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px var(--primary-border);
+}
+
+/* Featured card — large */
+.bento-featured {
+  grid-column: span 5;
+  grid-row: span 6;
+}
+
+/* Regular cards */
+.bento-card:not(.bento-featured) {
+  grid-column: span 4;
+  grid-row: span 5;
+}
+
+/* Rearrange last 2 to be smaller */
+.bento-card:nth-child(n+6):not(.bento-featured) {
+  grid-column: span 3;
+  grid-row: span 4;
+}
+
+.bento-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--ease-slow);
+}
+
+.bento-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.3) 50%, transparent 100%);
+  padding: 20px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.bento-check {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 28px;
+  height: 28px;
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+  background: var(--primary-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.bento-name {
+  font-family: var(--font-display);
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.1;
+  font-size: 1.3rem;
+}
+
+.bento-featured .bento-name {
+  font-size: 1.8rem;
+}
+
+.bento-tagline {
+  font-size: 0.8rem;
+  color: rgba(240, 237, 232, 0.7);
+  line-height: 1.4;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* ── My Characters ── */
+.my-chars-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.my-char-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--ease);
+}
+
+.my-char-card:hover {
+  border-color: var(--border-bright);
+  background: var(--surface);
+}
+
+.my-char-info { flex: 1; min-width: 0; }
+.my-char-name { font-weight: 500; color: var(--text); }
+.my-char-sub { font-size: 0.8rem; color: var(--text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .bento-featured { grid-column: span 7; grid-row: span 6; }
+  .bento-card:not(.bento-featured) { grid-column: span 5; grid-row: span 5; }
+  .bento-card:nth-child(n+5):not(.bento-featured) { grid-column: span 4; }
+}
+
+@media (max-width: 768px) {
+  .discover-header { flex-direction: column; align-items: flex-start; }
+  .bento-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 200px;
+  }
+  .bento-featured, .bento-card:not(.bento-featured), .bento-card:nth-child(n+6):not(.bento-featured) {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  .bento-featured {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  .discover-search { width: 100%; }
+  .discover-filters { flex-direction: column; align-items: stretch; }
+}

@@ -1,0 +1,161 @@
+/* Settings Page */
+
+.settings-container {
+  max-width: 680px;
+}
+
+.settings-header {
+  margin-bottom: 48px;
+}
+
+.settings-header h1 { margin-top: 8px; }
+
+.settings-section {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  margin-bottom: 20px;
+  background: var(--surface);
+}
+
+.settings-section-title {
+  margin-bottom: 16px;
+  color: var(--primary);
+}
+
+/* Profile */
+.settings-profile {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.settings-profile-name {
+  font-weight: 500;
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.settings-profile-email {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* API Key */
+.api-key-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.api-key-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: #4ade80;
+  margin-top: 8px;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 6px #4ade80;
+}
+
+/* Toggle */
+.settings-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.settings-toggle-label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.settings-toggle-sub {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.settings-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 20px 0;
+}
+
+/* Toggle Button */
+.toggle-btn {
+  flex-shrink: 0;
+  width: 48px;
+  height: 26px;
+  border-radius: 13px;
+  background: var(--surface-3);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  position: relative;
+  transition: background var(--ease), border-color var(--ease);
+}
+
+.toggle-btn.on {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.toggle-knob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  transition: transform var(--ease), background var(--ease);
+}
+
+.toggle-btn.on .toggle-knob {
+  transform: translateX(22px);
+  background: white;
+}
+
+/* Data stats */
+.data-stats {
+  display: flex;
+  gap: 32px;
+}
+
+.data-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.data-stat-num {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1;
+}
+
+.data-stat-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.settings-actions-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
