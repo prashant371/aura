@@ -7,7 +7,9 @@ const generateId = () => `${Date.now()}-${Math.random().toString(36).slice(2, 8)
 const load = (key, fallback) => {
   try {
     const raw = localStorage.getItem(key)
-    return raw ? JSON.parse(raw) : fallback
+    if (!raw) return fallback
+    const parsed = JSON.parse(raw)
+    return parsed !== null && parsed !== undefined ? parsed : fallback
   } catch { return fallback }
 }
 
@@ -17,9 +19,10 @@ const save = (key, value) => {
 
 // Merge presets with user-created characters (presets always exist, deduped by id)
 const mergePresets = (stored) => {
-  const storedIds = new Set(stored.map(c => c.id))
+  const list = Array.isArray(stored) ? stored : []
+  const storedIds = new Set(list.map(c => c && c.id).filter(Boolean))
   const missing = PRESET_CHARACTERS.filter(p => !storedIds.has(p.id))
-  return [...missing, ...stored]
+  return [...missing, ...list]
 }
 
 // ─── Store ───────────────────────────────────────────
