@@ -36,13 +36,18 @@ function speakText(text, voice = 'alloy') {
   window.speechSynthesis.speak(utt)
 }
 
+const EMPTY_ARRAY = []
+
 export default function ChatPage() {
   const { id } = useParams()
   const navigate = useNavigate()
 
-  const character = useStore(s => s.characters.find(c => c.id === id))
-  const messages = useStore(s => s.chats[id] || [])
-  const memories = useStore(s => s.memories[id] || [])
+  const characters = useStore(s => s.characters)
+  const character = characters.find(c => c.id === id)
+  const chats = useStore(s => s.chats)
+  const messages = chats[id] || EMPTY_ARRAY
+  const memoriesMap = useStore(s => s.memories)
+  const memories = memoriesMap[id] || EMPTY_ARRAY
   const settings = useStore(s => s.settings)
   const scenes = useStore(s => s.scenes)
   const personas = useStore(s => s.personas)

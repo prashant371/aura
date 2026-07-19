@@ -1,15 +1,20 @@
 import useStore from '../store/useStore'
 
+const EMPTY_ARRAY = []
+
 export function useCharacter(id) {
-  return useStore(s => s.characters.find(c => c.id === id))
+  const characters = useStore(s => s.characters)
+  return characters.find(c => c.id === id)
 }
 
 export function useMessages(id) {
-  return useStore(s => s.chats[id] || [])
+  const chats = useStore(s => s.chats)
+  return chats[id] || EMPTY_ARRAY
 }
 
 export function useMemories(id) {
-  return useStore(s => s.memories[id] || [])
+  const memories = useStore(s => s.memories)
+  return memories[id] || EMPTY_ARRAY
 }
 
 export function useActivePersona() {
@@ -19,5 +24,6 @@ export function useActivePersona() {
 }
 
 export function useGroupChat(id) {
-  return useStore(s => s.groupChats[id])
+  const groupChats = useStore(s => s.groupChats)
+  return groupChats[id]
 }
