@@ -28,12 +28,17 @@ const useStore = create((set, get) => ({
   // ── Settings ──
   settings: (() => {
     const defaults = {
-      geminiApiKey: '',
+      geminiApiKey: import.meta.env.VITE_GEMINI_API_KEY || '',
       defaultModel: 'gemini-2.0-flash',
       nsfwEnabled: false,
       voiceEnabled: true,
     }
-    return { ...defaults, ...load('cv_settings', {}) }
+    const saved = load('cv_settings', {})
+    // Use env key as fallback only if user hasn't set their own key
+    if (!saved.geminiApiKey && defaults.geminiApiKey) {
+      saved.geminiApiKey = defaults.geminiApiKey
+    }
+    return { ...defaults, ...saved }
   })(),
 
   updateSettings: (patch) => {
