@@ -112,16 +112,16 @@ export async function streamChat({
 
     // Auto-fallback for unsupported models
     if ((response.status === 404 || response.status === 400 || msg.includes('not found')) && retries > 0) {
-      console.warn(`Model ${model} failed, falling back to gemini-1.5-flash…`)
-      return streamChat({ apiKey, model: 'gemini-1.5-flash', systemPrompt, history, userMessage, onChunk, nsfwEnabled, retries: retries - 1 })
+      console.warn(`Model ${model} failed, falling back to gemini-flash-latest…`)
+      return streamChat({ apiKey, model: 'gemini-flash-latest', systemPrompt, history, userMessage, onChunk, nsfwEnabled, retries: retries - 1 })
     }
 
-    // Rate limit (429) fast retry with 1.5-flash or clear error
+    // Rate limit (429) fast retry with gemini-flash-latest or clear error
     if (response.status === 429) {
       if (retries > 0) {
-        console.warn('Rate limit hit (429), retrying with gemini-1.5-flash…')
+        console.warn('Rate limit hit (429), retrying with gemini-flash-latest…')
         await new Promise(r => setTimeout(r, 1200))
-        return streamChat({ apiKey, model: 'gemini-1.5-flash', systemPrompt, history, userMessage, onChunk, nsfwEnabled, retries: retries - 1 })
+        return streamChat({ apiKey, model: 'gemini-flash-latest', systemPrompt, history, userMessage, onChunk, nsfwEnabled, retries: retries - 1 })
       }
       throw new Error('Gemini rate limit reached (429). Please wait a few seconds before sending another message, or check your API key in Settings.')
     }

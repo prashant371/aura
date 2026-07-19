@@ -6,8 +6,9 @@ import './Settings.css'
 
 const MODELS = [
   { value: 'gemini-2.0-flash', label: 'Gemini 2.0 Flash (Recommended)' },
-  { value: 'gemini-1.5-flash', label: 'Gemini 1.5 Flash' },
-  { value: 'gemini-1.0-pro', label: 'Gemini 1.0 Pro' },
+  { value: 'gemini-2.5-flash', label: 'Gemini 2.5 Flash (Ultra Fast)' },
+  { value: 'gemini-flash-latest', label: 'Gemini Flash (Latest)' },
+  { value: 'gemini-pro-latest', label: 'Gemini Pro (Latest)' },
 ]
 
 export default function Settings() {
